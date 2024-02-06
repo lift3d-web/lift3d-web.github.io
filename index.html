@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta charset="utf-8">
+    <meta property="og:title" content="3D-Diffuser-Actor" />
+    <meta property="og:description" content="3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="https://3d-diffuser-actor.github.io//static/images/preview_new.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta name="description"
+        content="3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback" />
+    <meta name="keywords"
+        content="robotic learning, diffusion models, 3D vision, imitation learning, deep learning" />
+    <meta name="viewport" content="initial-scale=1" />
+    <!-- twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="3D Diffuser Actor" />
+    <meta name="twitter:description"
+        content="3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback" />
+    <meta name="twitter:url" content="https://3d-diffuser-actor.github.io/" />
+    <meta name="twitter:image" content="https://3d-diffuser-actor.github.io/static/images/preview_new.jpeg" />
+    <!-- <meta name="twitter:site" content="@pathak2206" /> -->
+    <meta name="twitter:image" content="https://3d-diffuser-actor.github.io/static/images/preview_new.jpeg" />
+    <meta name="twitter:image:src" content="https://3d-diffuser-actor.github.io/static/images/preview_new.jpeg" />
+    <meta name="twitter:image_alt" content="3D Diffuser Actor" />
+
+    <title>3D Diffuser Actor</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYWGEJGP6S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RYWGEJGP6S');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="https://use.typekit.net/iag3ven.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-coy.min.css"/> -->
+    <link rel="stylesheet" href="./static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js">
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💫</text></svg>">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+
+    <!-- mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 is-size-3 publication-title">3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback</h1>
+                        <div class="is-size-5 publication-authors">
+                            <!-- TODO: FIX -->
+                            <span class="author-block">
+                                <a href="http://twke18.github.io/" target="_blank">Tsung-Wei Ke*</a>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="author-block">
+                              <a href="https://nickgkan.github.io">Nikolaos Gkanatsios*</a>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="author-block">
+                              <a href="https://byang.org/">Brian Yang</a>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="author-block">
+                              <a href="https://www.zhou-xian.com/">Xian Zhou</a>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="author-block">
+                                <a href="https://www.cs.cmu.edu/~katef/" target="_blank">Katerina Fragkiadaki</a>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Carnegie Mellon University</span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">In Submission</span>
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <div class="publication-links">
+                              <!-- PDF Link. -->
+                              <span class="link-block">
+                                <a href=""
+                                   class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                  <i class="fas fa-file-pdf"></i>
+                                </span>
+                                <span>Paper</span>
+                                </a>
+                              </span>
+                              <span class="link-block">
+                                <a href=""
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <i class="ai ai-arxiv"></i>
+                                  </span>
+                                  <span>arXiv</span>
+                                </a>
+                              </span>
+                              <!-- Code Link. -->
+                              <span class="link-block">
+                                <a href=""
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <i class="fab fa-github"></i>
+                                  </span>
+                                  <span>Code (TBA)</span>
+                                  </a>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- hack to pull the below up vertically -->
+    <span style="display:block; margin-top:-1.75em;"/>
+
+
+
+    <!-- Teaser -->
+    <!--
+    <section class="section" id="teaser">
+        <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <div class="column" style="border-radius: 10px;">
+                    <p style="padding: 0px;" />
+                    <div id="method-overview-wrapper">
+                        <video style="max-width: 80%" autoplay muted loop>
+                            <source src="./static/images/" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>                               
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+    <!--/ Teaser -->
+
+
+
+    <!-- <p style="padding: 10px;" /> -->
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                        We marry diffusion policies and 3D scene representations for robot manipulation. Diffusion policies learn the action distribution conditioned on the robot and environment state using conditional diffusion models.  They have recently shown to outperform both deterministic and alternative state-conditioned action distribution learning methods in learning from demonstrations. 3D robot policies use 3D scene feature representations aggregated from a single or multiple 2D image views using sensed depth. They have shown to generalize better than their 2D counterparts across camera viewpoints. We unify these two lines of work and present <strong>3D Diffuser Actor</strong>, a neural policy architecture that, given a language task description, builds a 3D representation of the visual scene from one or more viewpoints and conditions on it to iteratively denoise   3D rotations and translations for the robot's end-effector.
+                        </p>
+                        <p>
+                        At each denoising iteration, our model represents the current end-effector estimate as a token in the 3D scene representation and featurizes it using 3D relative position attentions, similar to other visual tokens, to predicts its 3D translation and rotation error. We test <strong>3D Diffuser Actor</strong> on learning from demonstrations in simulation and in the real world.  We show our model outperforms both 3D policies and 2D diffusion policies, and sets a new state of the art on RLBench, an established  learning from demonstrations benchmark, where it  outperforms the  previous SOTA by a 17% absolute gain. Our results suggest that 3D scene representations and powerful generative modeling are key to efficient learning of multi-task robot policies from demonstrations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Method Overview -->
+    <section class="section" id="method-overview">
+        <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <div class="column" style="border-radius: 10px">
+                    <h2 class="title is-3">
+                        <span class="method-name">3D scene representations</span>
+                    </h2>
+                    <p style="padding: 0px;" />
+                    <div id="method-overview-wrapper">
+                            <video autoplay muted loop>
+                                <source src="./static/images/3d_scene.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>                            
+                    </div>
+                            <p style="padding: 10px;" />
+                        <div class="method-overview-text has-text-justified">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--/ Method Overview -->    
+
+    <!-- Method Overview -->
+    <section class="section" id="method-overview">
+        <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <div class="column" style="border-radius: 10px">
+                    <h2 class="title is-3">
+                        <span class="method-name">Keypose prediction from denoising process</span>
+                    </h2>
+                    <p style="padding: 0px;" />
+                    <div id="method-overview-wrapper">
+                            <video autoplay muted loop>
+                                <source src="./static/images/diffusion.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>                            
+                    </div>
+                            <p style="padding: 10px;" />
+                        <div class="method-overview-text has-text-justified">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Method Overview -->    
+
+
+    <section class="section">
+        <!-- Zero Shot. -->
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Multi-task performance on RLBench using 4 cameras</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                        We test on 18 manipulation tasks on RLBench under multi-task setups.  All models use 4 camera views and 100 expert demonstrations for each task.  Our 3D Diffuser Actor outperforms prior arts by a large margin, achieving <strong>+17.0</strong> absolute performance gain in average.
+                        </p>
+                    </div>
+
+                    <div class="content has-text-justified">
+                        <img src="./static/images/peract.png" alt="input image" style="vertical-align:middle;margin:0px 0px"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <!-- Zero Shot. -->
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Multi-task performance on RLBench using 1 camera</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                        We test on 10 manipulation tasks on RLBench under multi-task setups.  All models use 1 camera views and 20 expert demonstrations for each task.  Our 3D Diffuser Actor outperforms prior arts by a large margin, achieving <strong>+13.0</strong> absolute performance gain in average.
+                        </p>
+                    </div>
+
+                    <div class="content has-text-justified">
+                        <img src="./static/images/gnfactor.png" alt="input image" style="vertical-align:middle;margin:0px 0px"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--
+    <section class="section" id="paper">
+        <div class="container is-mobile">
+            <div class="columns is-centered has-text-centered">
+                <div class="container content">
+                    <h2 class="title is-3">BibTeX</h2>
+                    <div id="bibtex" class="column has-text-justified is-centered">
+                        <pre><code class="language-bibtex">@inproceedings{prabhudesai2023difftta,
+      title={Test-time Adaptation of Discriminative Models via Diffusion Generative Feedback},
+      author={Prabhudesai, Mihir and Ke, Tsung-Wei and Li, Alexander C. and Pathak, Deepak and Fragkiadaki, Katerina},
+      year={2023},
+      booktitle={Conference on Neural Information Processing Systems},
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <!-- TODO: UPDATE -->
+                <a class="icon-link" href="" target="_blank">
+                    <i class="ai ai-arxiv"></i>
+                </a>
+                &nbsp;
+                <!-- TODO: UPDATE -->
+                <a class="icon-link" href="" target="_blank">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                &nbsp;
+                <a class="icon-link" href=""
+                    target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="content">
+                    <p>
+                        Page source code was adapted from
+                        <a href="https://nerfies.github.io" target="_blank">here</a>
+                        and
+                        <a href="https://diffusion-tta.github.io"
+                            target="_blank">here</a>,
+                        and can be found in <a
+                            href=""
+                            target="_blank">this repository</a>.
+                    </p>
+                </div>
+            </div>
+    </footer>
+
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.js"
+        integrity="sha256-+dK6uqUp/DnP6ef97s8XcoynBnGe5vM5gvBECH0EB3U=" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
