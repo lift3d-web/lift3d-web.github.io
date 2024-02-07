@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta property="og:title" content="3D-Diffuser-Actor" />
-    <meta property="og:description" content="3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback" />
+    <meta property="og:description" content="Action Diffusion with 3D Scene Representations" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="https://3d-diffuser-actor.github.io//static/images/preview_new.jpeg" />
     <meta property="og:image:width" content="1200" />
@@ -30,14 +30,18 @@
 
     <title>3D Diffuser Actor</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYWGEJGP6S"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+        dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
-        gtag('config', 'G-RYWGEJGP6S');
+        gtag('config', 'G-PYVRSFMDRL');
     </script>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -80,11 +84,11 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-2 is-size-3 publication-title">3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback</h1>
+                        <h1 class="title is-1 publication-title">Action Diffusion with 3D Scene Representations</h1>
                         <div class="is-size-5 publication-authors">
                             <!-- TODO: FIX -->
                             <span class="author-block">
-                                <a href="http://twke18.github.io/" target="_blank">Tsung-Wei Ke*</a>
+                                <a href="http://twke18.github.io/">Tsung-Wei Ke*</a>
                             </span>
                             &nbsp;
                             &nbsp;
@@ -93,7 +97,7 @@
                             </span>
                             &nbsp;
                             &nbsp;
-                            <span class="author-block">
+                            <!-- <span class="author-block">
                               <a href="https://byang.org/">Brian Yang</a>
                             </span>
                             &nbsp;
@@ -102,9 +106,9 @@
                               <a href="https://www.zhou-xian.com/">Xian Zhou</a>
                             </span>
                             &nbsp;
-                            &nbsp;
+                            &nbsp; -->
                             <span class="author-block">
-                                <a href="https://www.cs.cmu.edu/~katef/" target="_blank">Katerina Fragkiadaki</a>
+                                <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a>
                             </span>
                         </div>
                         <p style="padding: 0.25rem;" />
@@ -148,6 +152,16 @@
                                   <span>Code (TBA)</span>
                                   </a>
                               </span>
+                              <!-- Code Link. -->
+                              <span class="link-block">
+                                <a href=""
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <i class="far fa-images"></i>
+                                  </span>
+                                  <span>Data</span>
+                                  </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -194,10 +208,7 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                        We marry diffusion policies and 3D scene representations for robot manipulation. Diffusion policies learn the action distribution conditioned on the robot and environment state using conditional diffusion models.  They have recently shown to outperform both deterministic and alternative state-conditioned action distribution learning methods in learning from demonstrations. 3D robot policies use 3D scene feature representations aggregated from a single or multiple 2D image views using sensed depth. They have shown to generalize better than their 2D counterparts across camera viewpoints. We unify these two lines of work and present <strong>3D Diffuser Actor</strong>, a neural policy architecture that, given a language task description, builds a 3D representation of the visual scene from one or more viewpoints and conditions on it to iteratively denoise   3D rotations and translations for the robot's end-effector.
-                        </p>
-                        <p>
-                        At each denoising iteration, our model represents the current end-effector estimate as a token in the 3D scene representation and featurizes it using 3D relative position attentions, similar to other visual tokens, to predicts its 3D translation and rotation error. We test <strong>3D Diffuser Actor</strong> on learning from demonstrations in simulation and in the real world.  We show our model outperforms both 3D policies and 2D diffusion policies, and sets a new state of the art on RLBench, an established  learning from demonstrations benchmark, where it  outperforms the  previous SOTA by a 17% absolute gain. Our results suggest that 3D scene representations and powerful generative modeling are key to efficient learning of multi-task robot policies from demonstrations.
+                        We marry diffusion policies and 3D scene representations for robot manipulation. Diffusion policies learn the action distribution conditioned on the robot and environment state using conditional diffusion models. They have recently shown to outperform both deterministic and alternative state-conditioned action distribution learning methods. 3D robot policies use 3D scene feature representations aggregated from a single or multiple camera views using sensed depth. They have shown to generalize better than their 2D counterparts across camera viewpoints. We unify these two lines of work and present 3D Diffuser Actor, a neural policy architecture that, given a language instruction, builds a 3D representation of the visual scene and conditions on it to iteratively denoise 3D rotations and translations for the robot’s end-effector. At each denoising iteration, our model represents end-effector pose estimates as 3D scene tokens and predicts the 3D translation and rotation error for each of them, by featurizing them using 3D relative attention to other 3D visual and language tokens. 3D Diffuser Actor sets a new state-of-the-art on RLBench with an absolute performance gain of 16.3% over the current SOTA on a multi-view setup and an absolute gain of 13.1% on a single-view setup. On the CALVIN benchmark, it matches the current SOTA in the setting of zero-shot unseen scene generalization. It also works in the real world from a handful of demonstrations. We ablate our model’s architectural design choices, such as 3D scene featurization and 3D relative attentions and show they all help generalization. Our results suggest that 3D scene representations and powerful generative modeling are keys to efficient robot learning from demonstrations.
                         </p>
                     </div>
                 </div>
@@ -212,7 +223,7 @@
             <div class="columns is-centered has-text-centered">
                 <div class="column" style="border-radius: 10px">
                     <h2 class="title is-3">
-                        <span class="method-name">3D scene representations</span>
+                        <span class="method-name">Our model uses 3D scene representations</span>
                     </h2>
                     <p style="padding: 0px;" />
                     <div id="method-overview-wrapper">
@@ -235,7 +246,7 @@
     <!--/ Method Overview -->    
 
     <!-- Method Overview -->
-    <section class="section" id="method-overview">
+    <!-- <section class="section" id="method-overview">
         <div class="container is-max-widescreen">
             <div class="columns is-centered has-text-centered">
                 <div class="column" style="border-radius: 10px">
@@ -258,7 +269,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--/ Method Overview -->    
 
 
