@@ -1,173 +1,799 @@
+<!--  -->
+
+
+<!-- --------------------------------------------------------- -->
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <meta charset="utf-8">
-    <meta property="og:title" content="3D-Diffuser-Actor" />
-    <meta property="og:description" content="Action Diffusion with 3D Scene Representations" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="https://3d-diffuser-actor.github.io//static/images/preview_new.jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-    <meta name="description"
-        content="3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback" />
-    <meta name="keywords"
-        content="robotic learning, diffusion models, 3D vision, imitation learning, deep learning" />
-    <meta name="viewport" content="initial-scale=1" />
-    <!-- twitter -->
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="robot learning, diffusion models, 3D vision, imitation learning, deep learning, robotics, manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="https://3d-diffuser-actor.github.io//static/images/preview_new.jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="628" />
+  
+  <article class="post-content">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="3D Diffuser Actor" />
     <meta name="twitter:description"
-        content="3D Diffuser Actor: Multi-task 3D Robot Manipulation with Iterative Error Feedback" />
+        content="Action Diffusion with 3D Scene Representations" />
     <meta name="twitter:url" content="https://3d-diffuser-actor.github.io/" />
     <meta name="twitter:image" content="https://3d-diffuser-actor.github.io/static/images/preview_new.jpeg" />
-    <!-- <meta name="twitter:site" content="@pathak2206" /> -->
     <meta name="twitter:image" content="https://3d-diffuser-actor.github.io/static/images/preview_new.jpeg" />
     <meta name="twitter:image:src" content="https://3d-diffuser-actor.github.io/static/images/preview_new.jpeg" />
     <meta name="twitter:image_alt" content="3D Diffuser Actor" />
+  <article class="post-content">
 
-    <title>3D Diffuser Actor</title>
+  <title>Action Diffusion with 3D Scene Representations</title>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
 
-        function gtag() {
-        dataLayer.push(arguments);
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+ <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  
+
+  <style>
+    .material-symbols-rounded {
+        font-variation-settings: 'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+    }
+
+
+    .linkscontainer {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .links {
+        /*font-size: 5rem;*/
+        /*margin: 0 -20px;*/
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .links a span.material-symbols-rounded {
+        max-width: 25px;
+    }
+
+    span.material-symbols-rounded {
+        max-width: 25px;
+    }
+
+    .links a {
+        display: inline-flex;
+        /*flex-direction: column;*/
+        align-items: center;
+        text-decoration: none;
+        border-radius: 5px;
+        padding: 5px 7px;
+        color: #f6f3f1 !important;
+        font-family: 'GT Ultra', sans-serif !important;
+        font-weight: 400;
+        /*margin: 0 10px;*/
+        transition: transform .2s;
+        background-color: rgba(var(--btn-bgc), 1);
+    }
+
+
+    .links a:nth-child(1) {
+        --btn-bgc: 237, 100, 90;
+    }
+
+    .links a:hover {
+        transform: scale(1.2);
+        color: #f6f3f1 !important;
+    }
+
+    .links a:active {
+        transform: scale(1.3);
+    }
+
+    .links a:nth-child(2) {
+        --btn-bgc: 47, 138, 196;
+    }
+
+    .links a:nth-child(3) {
+        --btn-bgc: 229, 134, 6;
+    }
+
+    .links a:nth-child(4) {
+        --btn-bgc: 133, 180, 51;
+    }
+
+    .links a:nth-child(5) {
+        --btn-bgc: 204, 97, 176;
+    }
+
+    .links a span.material-symbols-rounded {
+        margin-right: .25rem;
+    }
+
+    .links a:not(:last-child) {
+        /*margin-right: 20px;*/
+    }
+
+
+    .links .material-symbols-rounded {
+        font-size: 1.25rem;
+    }
+
+
+    .links i {
+        font-size: 28px;
+    }
+
+    .fig {
+        width: 100%;
+        display: block;
+        padding: 0 10px;
+        margin: 0 auto;
+    }
+
+    img.arch {
+        max-width: 500px;
+    }
+
+    img.blobs {
+        max-width: 350px;
+    }
+
+    .teaser {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .teaser + section {
+        margin-top: 1rem;
+    }
+
+    .teaser video {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    img.teaser {
+        max-width: 90%;
+    }
+
+    .abstract-imgs .col {
+        display: flex;
+        align-items: center;
+    }
+
+    .videowrapper {
+        float: none;
+        clear: both;
+        width: 100%;
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 25px;
+        height: 0;
+    }
+
+    .wrapwrap {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .videowrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .abstract-capt {
+        font-size: 0.8rem;
+        display: block !important;
+        text-align: center;
+    }
+
+    .latex {
+        display: inline;
+        font-family: 'Math', monospace;
+        font-style: italic;
+    }
+
+    p {
+        margin: 0 !important;
+    }
+
+    .bs-tooltip-end {
+        margin-left: 3px !important;
+    }
+
+    section {
+        margin: 2rem 0;
+    }
+
+    section h5 {
+        margin: 1.5rem 0 0.75rem 0;
+    }
+
+    .iconbutton {
+        padding: 0.1rem 0.3rem;
+        display: flex;
+        border: none !important;
+        background-color: #4B495B !important;
+        color: #f5ece5 !important;
+        font-family: 'GT Ultra', sans-serif !important;
+        font-weight: 400;
+        text-decoration: none !important;
+    }
+
+    .iconbutton span.material-symbols-rounded {
+        font-size: 1.5rem;
+        /* font-weight: 700; */
+    }
+
+    .playpause span.material-symbols-rounded {
+        font-variation-settings: 'wght' 700;
+
+
+    }
+
+    .iconbutton span.material-symbols-rounded:hover {
+        color: #faf6f2 !important;
+    }
+
+    .iconbutton:hover, .iconbutton:focus {
+        background-color: #2E2E38 !important;
+        border-color: none !important;
+        color: #faf6f2 !important;
+    }
+
+    .iconbutton:focus {
+
+    }
+
+    .iconbutton:active {
+        background-color: #09090B !important;
+
+    }
+
+    [data-clipboard-target] {
+        cursor: pointer;
+    }
+
+    [data-clipboard-target]:hover {
+        color: #276FBF !important;
+    }
+
+    /* .emptyrooms {
+         max-width: 80%;
+     }*/
+
+    .emptyrooms {
+        display: flex;
+        /*justify-content: center;*/
+        align-items: flex-start;
+        background-color: #f5ece5;
+    }
+
+    .playpause {
+        flex-shrink: 0;
+    }
+
+    .emptyrooms img:first-child {
+        width: 16.196944%;
+        margin-right: 0.6%;
+    }
+
+    .emptyrooms img:last-child {
+        width: 82.8862479%;
+    }
+
+
+    section h3 {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    section h5, section h3 {
+        justify-content: space-between;
+
+        display: flex;
+        align-items: center;
+    }
+
+    h3, h5 {
+        scroll-margin-top: 25px;
+        /*display: inline-block;*/
+    }
+
+    h3[data-exclude-link], h5[data-exclude-link] {
+        cursor: initial;
+    }
+
+    h3 span, h5 span {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    h3 span:hover, h5 span:hover {
+
+        color: #276FBF !important;
+    }
+
+    /*
+            h3[data-exclude-link]:hover, h5[data-exclude-link]:hover {
+                color: initial !important;
+            }*/
+
+    .carousel {
+        margin: 1rem 0;
+    }
+
+    .ltx {
+        vertical-align: baseline;
+    }
+
+    .cit {
+        background-color: rgba(26, 25, 31, 0.05);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        display: inline-block;
+        margin: 0 auto;
+        overflow-y: hidden;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+        font-family: 'Code', monospace;
+    }
+
+    .cit_cont {
+        display: flex;
+    }
+
+    .video-container {
+        position: relative;
+    }
+
+    /* .video-container .video-border {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         top: 0;
+         left: 0;
+         box-shadow: inset 0px 0px 0px 6px #f5ece5;
+     }*/
+
+    .video-container video {
+        width: 100%;
+        display: block;
+        clip-path: inset(5px 5px);
+    }
+
+    .video-container img {
+        width: 100%;
+    }
+
+    .splide > * {
+        font-weight: 500;
+        position: initial;
+    }
+
+    .splide__arrow {
+        position: initial;
+        background: none;
+        /*opacity: 1;*/
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+        font-size: 1.25rem;
+        justify-content: end;
+        width: 1.5em;
+    }
+
+    .splide__arrow--prev {
+        justify-content: left;
+    }
+
+    .splide__slide {
+        height: 0;
+    }
+
+    .splide__slide.is-visible {
+        height: auto;
+    }
+
+    .move-cont {
+        display: flex;
+    }
+
+    .move-cont > video {
+        max-width: 100%;
+    }
+
+    .splide__pagination__page.is-active {
+        background: #000;
+    }
+
+    .splide__pagination__page {
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+    .splide__pagination {
+        margin-top: 0.25rem;
+    }
+
+    .splide__pagination__page:hover {
+        background: #aaa;
+        transform: scale(1.2);
+    }
+
+    .splide__track_and_arrows {
+        display: flex;
+    }
+
+    .splide__arrows {
+        display: flex;
+        align-items: center;
+    }
+
+    .styletransfer {
+        display: grid;
+        grid-row-gap: .5rem;
+        grid-template-columns: 1fr 20px 1fr 1fr 1fr 20px 1fr 1fr 1fr;
+    }
+
+    .inversion {
+        display: grid;
+        /*grid-row-gap: .5rem;*/
+        /*grid-template-columns: 1fr 20px 1fr 1fr 1fr 20px 1fr 1fr 1fr;*/
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .styletransfer img {
+        max-width: 100%;
+        clip-path: inset(2px 2px);
+    }
+
+    .inversion span {
+        text-align: center;
+    }
+
+    .inversion img {
+        max-width: 100%;
+        clip-path: inset(2px 2px);
+    }
+
+
+    #inversion ~ .splide img {
+        max-width: 100%;
+        padding: 0.3rem;
+    }
+
+    .styletransfer span {
+        text-align: center;
+    }
+
+    .styletransfer span:nth-child(2) {
+        grid-column-start: 3;
+        grid-column-end: 6;
+    }
+
+    .styletransfer span:nth-child(3) {
+        grid-column-start: 7;
+        grid-column-end: 10;
+    }
+
+
+    @media (min-width: 992px) {
+        .container {
+            max-width: 1050px;
+        }
+    }
+
+    .inversion_subheader {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .inversion_subheader:not(:first-of-type) {
+        margin-top: 0.2rem;
+    }
+
+    .inversion_subheader + .splide {
+        margin: 0.2rem 0 !important;
+    }
+
+    /*
+            .move-cont .video-container:nth-child(8), .move-cont .video-container:nth-child(7) {
+                display: none;
+            }*/
+
+    @media (max-width: 991px) {
+        /*
+                    .move-cont .video-container:nth-child(5), .move-cont .video-container:nth-child(6) {
+                        display: none;
+                    }*/
+        .move-cont > video {
+            max-width: 150%;
+            clip-path: inset(0 33.333333% 0 0);
         }
 
-        gtag('js', new Date());
+        header h3 {
+            font-size: 1.5rem;
+        }
 
-        gtag('config', 'G-PYVRSFMDRL');
-    </script>
+        .cit {
+            /*font-size: 12px !important;*/
+        }
 
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+        .emptyrooms img:last-child {
+            width: 99.6% !important;
+        }
 
-    <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="./static/css/index.css">
-    <link rel="stylesheet" href="https://use.typekit.net/iag3ven.css">
+        .emptyrooms img:first-child {
+            width: 19.46% !important;
+            margin-right: 0.7522% !important;
+        }
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-coy.min.css"/> -->
-    <link rel="stylesheet" href="./static/css/prism.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js">
-    </script>
+        .styletransfer {
+            display: grid;
+            grid-template-columns: 1fr 15px 1fr 1fr 15px 1fr 1fr !important;
+        }
 
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💫</text></svg>">
+        .styletransfer img:nth-child(9n+3), .styletransfer img:nth-child(9n-1) {
+            display: none;
+        }
+
+        .styletransfer span:nth-child(2) {
+            grid-column-start: 3;
+            grid-column-end: 5;
+        }
+
+        .styletransfer span:nth-child(3) {
+            grid-column-start: 6;
+            grid-column-end: 8;
+        }
+    }
+
+    .author {
+        padding: 0 0.6rem;
+    }
+
+    @media (max-width: 767px) {
+        html, body {
+
+            /*font-size: 16px;*/
+        }
+
+        .author {
+            font-size: 18px;
+        }
+
+        .insts {
+            font-size: 16px;
+        }
+
+        /*.move-cont .video-container:nth-child(4) {
+            display: none;
+        }*/
+        .move-cont > video {
+            max-width: 200%;
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .inversion *:nth-child(5n+2) {
+            display: none;
+        }
+
+        .inversion {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        .emptyrooms img:last-child {
+            width: 124.477307% !important;
+        }
+
+        .emptyrooms img:first-child {
+            width: 24.3243243% !important;
+            margin-right: 0.9% !important;
+        }
+
+        .styletransfer {
+            display: grid;
+            grid-template-columns: 1fr 10px 1fr 10px 1fr !important;
+        }
+
+        .styletransfer img:nth-child(9n+2), .styletransfer img:nth-child(9n-2) {
+            display: none;
+        }
+
+        .styletransfer span:nth-child(2) {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+
+        .styletransfer span:nth-child(3) {
+            grid-column-start: 5;
+            grid-column-end: 6;
+        }
+    }
+
+    @media (max-width: 540px) {
+        .links a span.material-symbols-rounded {
+            max-width: 20px;
+        }
+
+        .links {
+            gap: 12px;
+        }
+    }
+
+    @media (max-width: 510px) {
+        /*
+                    .move-cont .video-container:nth-child(3) {
+                        display: none;
+                    }*/
+        .move-cont > video {
+            max-width: 300%;
+            clip-path: inset(0 66.6666666% 0 0);
+        }
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
+        .inversion {
+            grid-template-columns: 1fr 1fr;
+        }
 
-    <!-- mathjax -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        .inversion span:nth-child(n+4) {
+            grid-row: 3;
+        }
 
+        .links .material-symbols-rounded {
+            /*display: none;*/
+            font-size: 1rem;
+        }
+
+        .links a span.material-symbols-rounded {
+            max-width: 18px;
+        }
+
+    }
+
+    @media (max-width: 399px) {
+
+    }
+
+    @media (max-width: 380px) {
+        /*.links .material-symbols-rounded {*/
+        /*    display: none;*/
+        /*    padding: 5px 10px;*/
+        /*    !*font-size: 1rem;*!*/
+        /*}*/
+    }
+
+    @media (max-width: 575px) {
+
+        img.blobs {
+            max-width: 300px;
+        }
+
+        .emptyrooms img:last-child {
+            width: 165.941536% !important;
+        }
+
+        .emptyrooms img:first-child {
+            width: 32.4269205% !important;
+            margin-right: 1.15% !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .abstract-imgs .col-md-7 {
+            border-right: 1px solid #1f1e1d;
+        }
+
+        img.arch, img.blobs {
+            max-width: 600px;
+        }
+
+    }
+
+
+</style>
 </head>
-
+<!-- --------------------------------------------------------- -->
 <body>
+
     <section class="hero">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                    <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">Action Diffusion with 3D Scene Representations</h1>
-                        <div class="is-size-5 publication-authors">
-                            <!-- TODO: FIX -->
-                            <span class="author-block">
-                                <a href="http://twke18.github.io/">Tsung-Wei Ke*</a>
-                            </span>
-                            &nbsp;
-                            &nbsp;
-                            <span class="author-block">
-                              <a href="https://nickgkan.github.io">Nikolaos Gkanatsios*</a>
-                            </span>
-                            &nbsp;
-                            &nbsp;
-                            <!-- <span class="author-block">
-                              <a href="https://byang.org/">Brian Yang</a>
-                            </span>
-                            &nbsp;
-                            &nbsp;
-                            <span class="author-block">
-                              <a href="https://www.zhou-xian.com/">Xian Zhou</a>
-                            </span>
-                            &nbsp;
-                            &nbsp; -->
-                            <span class="author-block">
-                                <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a>
-                            </span>
-                        </div>
-                        <p style="padding: 0.25rem;" />
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block">Carnegie Mellon University</span>
-                        </div>
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block">In Submission</span>
-                        </div>
-
-                        <p style="padding: 20px;" />
-
-                        <div class="buttons is-centered">
-                            <div class="publication-links">
-                              <!-- PDF Link. -->
-                              <span class="link-block">
-                                <a href=""
-                                   class="external-link button is-normal is-rounded is-dark">
-                                <span class="icon">
-                                  <i class="fas fa-file-pdf"></i>
-                                </span>
-                                <span>Paper</span>
-                                </a>
-                              </span>
-                              <span class="link-block">
-                                <a href=""
-                                   class="external-link button is-normal is-rounded is-dark">
-                                  <span class="icon">
-                                      <i class="ai ai-arxiv"></i>
-                                  </span>
-                                  <span>arXiv</span>
-                                </a>
-                              </span>
-                              <!-- Code Link. -->
-                              <span class="link-block">
-                                <a href=""
-                                   class="external-link button is-normal is-rounded is-dark">
-                                  <span class="icon">
-                                      <i class="fab fa-github"></i>
-                                  </span>
-                                  <span>Code (TBA)</span>
-                                  </a>
-                              </span>
-                              <!-- Code Link. -->
-                              <span class="link-block">
-                                <a href=""
-                                   class="external-link button is-normal is-rounded is-dark">
-                                  <span class="icon">
-                                      <i class="far fa-images"></i>
-                                  </span>
-                                  <span>Data</span>
-                                  </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">Action Diffusion with 3D Scene Representations</h1>
+              <div class="is-size-4 publication-authors">
+                <span class="author-block">
+                    <a href="http://twke18.github.io/">Tsung-Wei Ke*</a>
+                </span>
+                &nbsp;
+                &nbsp;
+                <span class="author-block">
+                  <a href="https://nickgkan.github.io">Nikolaos Gkanatsios*</a>
+                </span>
+                &nbsp;
+                &nbsp;
+                <span class="author-block">
+                    <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a>
+                </span>
+                
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Carnegie Mellon University</span>
+              </div>
+              
+              <div class="is-size-5 contribution">
+                <span class="appear">In submission</a></span>
+              </div>
+    
+              <div class="is-size-5 contribution">
+                <span class="contribution"><sup>*</sup>Equal Contribution</span>
+              </div><br> 
+    
+              <!-- <table align=center width=700px>
+                <tr>
+                  <td align=center width=100px><center><span style="font-size:28px"><a href="https://arxiv.org/abs/2304.14391">[Paper]</a></span></center></td>
+                  <td align=center width=100px><center><span style="font-size:28px"><a href="https://github.com/nickgkan/butd_detr">[Code]</a></span></center></td>
+              <tr/>
+            </table> -->
+    
+            <div class="linkscontainer">
+              <div class="links mt-4">
+              <a href="" target="_blank"><span class="material-symbols-rounded">
+              description
+              </span><span>Paper</span></a>
+              <a href="" target="_blank"><span class="material-symbols-rounded">
+              code
+              </span><span>Code</span></a>
+              <!-- <a href="#results"><span class="material-symbols-rounded">
+              science
+              </span><span>Results</span></a> -->
+              </div>
+              </div>
+    
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
 
@@ -200,7 +826,7 @@
             <div class="column is-three-quarters">
               <div class="content has-text-justified">
                 <p>
-                We draw 60 samples for the next predicted trajectory in CALVIN.
+                We show 60 samples for the next predicted trajectory in CALVIN.
                 </p>
               </div>
               <div class="content has-text-centered">
@@ -211,8 +837,8 @@
               </div>
               <div class="content has-text-justified">
                 <p>
-                We draw 60 samples for the next predicted keypose in the real-world.
-                3D Diffuser Actor captures 3 modes of behaviors for "picking up the grape".
+                We show 60 samples for the next predicted keypose in the real-world.
+                3D Diffuser Actor <b>captures all 3 modes</b> of behaviors for "picking up the grape".
                 </p>
               </div>
               <div class="content has-text-centered">
@@ -230,58 +856,15 @@
     <!-- hack to pull the below up vertically -->
     <span style="display:block; margin-top:-1.75em;"/>
 
-    <!-- 
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-three-quarters">
-                    <h2 class="title is-3">Abstract</h2>
-                    <div class="content has-text-justified">
-                        <p>
-                        We marry diffusion policies and 3D scene representations for robot manipulation. Diffusion policies learn the action distribution conditioned on the robot and environment state using conditional diffusion models. They have recently shown to outperform both deterministic and alternative state-conditioned action distribution learning methods. 3D robot policies use 3D scene feature representations aggregated from a single or multiple camera views using sensed depth. They have shown to generalize better than their 2D counterparts across camera viewpoints. We unify these two lines of work and present 3D Diffuser Actor, a neural policy architecture that, given a language instruction, builds a 3D representation of the visual scene and conditions on it to iteratively denoise 3D rotations and translations for the robot’s end-effector. At each denoising iteration, our model represents end-effector pose estimates as 3D scene tokens and predicts the 3D translation and rotation error for each of them, by featurizing them using 3D relative attention to other 3D visual and language tokens. 3D Diffuser Actor sets a new state-of-the-art on RLBench with an absolute performance gain of 16.3% over the current SOTA on a multi-view setup and an absolute gain of 13.1% on a single-view setup. On the CALVIN benchmark, it matches the current SOTA in the setting of zero-shot unseen scene generalization. It also works in the real world from a handful of demonstrations. We ablate our model’s architectural design choices, such as 3D scene featurization and 3D relative attentions and show they all help generalization. Our results suggest that 3D scene representations and powerful generative modeling are keys to efficient robot learning from demonstrations.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
-
-    <!-- Method Overview -->
-    <!-- <section class="section" id="method-overview">
-        <div class="container is-max-widescreen">
-            <div class="columns is-centered has-text-centered">
-                <div class="column" style="border-radius: 10px">
-                    <h2 class="title is-3">
-                        <span class="method-name">Our model uses 3D scene representations</span>
-                    </h2>
-                    <p style="padding: 0px;" />
-                    <div id="method-overview-wrapper">
-                            <video autoplay muted loop>
-                                <source src="./static/images/3d_scene.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>                            
-                    </div>
-                            <p style="padding: 10px;" />
-                        <div class="method-overview-text has-text-justified">
-                            <p>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
- -->
     <section class="section">
         <!-- Zero Shot. -->
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">Stat-of-the-art on CALVIN</h2>
+                    <h2 class="title is-3">State-of-the-art on CALVIN</h2>
                     <div class="content has-text-justified">
                         <p>
-                        We test on CALVIN under the setting of zero-shot unseen-scene generalization.  All models are trained on environment A, B, C and tested on environment D.  Our 3D Diffuser Actor outperforms prior arts by a large margin, achieving <strong>+0.2</strong> more sequential tasks.
+                        We test on CALVIN on the setting of <b>zero-shot unseen-scene generalization</b>. All models are trained on environments A, B, C and tested on environment D. 3D Diffuser Actor outperforms prior arts by a large margin, achieving 0.2 more sequential tasks, a <b>7% relative improvement</b>.
                         </p>
                     </div>
                     <div class="content has-text-centered">
@@ -326,7 +909,7 @@
                     <h2 class="title is-3">State-of-the-art on RLBench</h2>
                     <div class="content has-text-justified">
                         <p>
-                        We test on 18 manipulation tasks on RLBench under multi-task setups.  All models use 4 camera views and 100 expert demonstrations for each task.  Our 3D Diffuser Actor outperforms prior arts by a large margin, achieving <strong>+16.0</strong> absolute performance gain in average.
+                        We test on a multi-task setup of 18 manipulation tasks on RLBench. All models use 4 camera views and 100 expert demonstrations for each task. 3D Diffuser Actor outperforms prior arts by a large margin, achieving <b>16.0 absolute performance gain</b> on average across tasks.
                         </p>
                     </div>
 
@@ -449,7 +1032,7 @@
                         Page source code was adapted from
                         <a href="https://nerfies.github.io" target="_blank">here</a>
                         and
-                        <a href="https://diffusion-tta.github.io"
+                        <a href="https://ebmplanner.github.io/"
                             target="_blank">here</a>,
                         and can be found in <a
                             href=""
