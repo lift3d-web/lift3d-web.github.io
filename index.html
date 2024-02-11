@@ -781,9 +781,9 @@
               <a href="" target="_blank"><span class="material-symbols-rounded">
               description
               </span><span>Paper</span></a>
-              <a href="" target="_blank"><span class="material-symbols-rounded">
+              <a href="https://github.com/nickgkan/3d_diffuser_actor" target="_blank"><span class="material-symbols-rounded">
               code
-              </span>https://github.com/nickgkan/3d_diffuser_actor<span>Code</span></a>
+              </span><span>Code</span></a>
               <!-- <a href="#results"><span class="material-symbols-rounded">
               science
               </span><span>Results</span></a> -->
@@ -803,7 +803,7 @@
             <img src="./static/images/teaser.jpg" alt="input image" style="vertical-align:middle;margin:0px 0px"/>
           </div>
           <div class="columns is-centered has-text-centered">
-            <div class="column is-three-quarters">
+            <div class="column">
                 <h2 class="title is-3">Abstract</h2>
                 <div class="content has-text-justified">
                     <p>
@@ -823,15 +823,23 @@
           <div class="columns is-centered has-text-centered">
       
             <!-- Visual Effects. -->
-            <div class="column is-three-quarters">
+            <div class="column">
               <div class="content has-text-justified">
                 <p>
-                We show 60 samples for the next predicted trajectory in CALVIN.
+                We show 60 samples for the next predicted trajectory on CALVIN.
                 </p>
               </div>
               <div class="content has-text-centered">
-                <video id="put_grapes" autoplay controls muted loop playsinline width="33%">
+                <video id="put_grapes" autoplay controls muted loop playsinline width="32%">
                   <source src="./static/videos/denoising_calvin.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="put_grapes" autoplay controls muted loop playsinline width="32%">
+                  <source src="./static/videos/denoising_calvin1.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="put_grapes" autoplay controls muted loop playsinline width="32%">
+                  <source src="./static/videos/denoising_calvin2.mp4"
                           type="video/mp4">
                 </video>
               </div>
@@ -842,8 +850,16 @@
                 </p>
               </div>
               <div class="content has-text-centered">
-                <video id="put_grapes" autoplay controls muted loop playsinline width="65%">
+                <video id="put_grapes" autoplay controls muted loop playsinline width="50%">
                   <source src="./static/videos/denoising_realworld.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="put_grapes" autoplay controls muted loop playsinline width="50%">
+                  <source src="./static/videos/denoising_realworld2.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="put_grapes" autoplay controls muted loop playsinline width="50%">
+                  <source src="./static/videos/denoising_realworld3.mp4"
                           type="video/mp4">
                 </video>
               </div>
@@ -990,6 +1006,58 @@
                         </video>
                         <video id="put_grapes" autoplay controls muted loop playsinline width="16%">
                         <source src="./static/videos/rlbench/new/new_turn_tap.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <!-- Zero Shot. -->
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">3D Diffuser Actor in the real world</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                        We train a multi-task 3D Diffuser Actor on 12 manipulation tasks in the real world to control a Franka Emika arm. All models use a single camera view and 15 demonstrations for each task. 3D Diffuser Actor is able to <b>solve multimodal tasks in the real world</b>.
+                        </p>
+                    </div>
+
+                    <div class="content has-text-centered">
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/box.mp4"
+                                type="video/mp4">
+                        </video>
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/grape.mp4"
+                                type="video/mp4">
+                        </video>
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/circle.mp4"
+                                type="video/mp4">
+                        </video>
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/hole.mp4"
+                                type="video/mp4">
+                        </video>
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/mouse.mp4"
+                                type="video/mp4">
+                        </video>
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/pen.mp4"
+                                type="video/mp4">
+                        </video>
+
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/sort_group.mp4"
+                                type="video/mp4">
+                        </video>
+                        <video id="put_grapes" autoplay controls muted loop playsinline width="24%">
+                        <source src="./static/videos/realworld/triangle.mp4"
                                 type="video/mp4">
                         </video>
                     </div>
