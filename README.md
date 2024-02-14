@@ -5,10 +5,10 @@ This repository contains the source code for the [3D Diffuser Actor project page
 If you find 3D Diffuser Actor useful for your work, please cite:
 
 ```bibtex
-@inproceedings{,
-      title={},
-      author={},
-      year={},
-      booktitle={},
+@article{3d_diffuser_actor,
+  author = {Ke, Tsung-Wei and Gkanatsios, Nikolaos and Fragkiadaki, Katerina},
+  title = {Action Diffusion with 3D Scene Representations},
+  journal = {Arxiv},
+  year = {2024}
 }
 ```
